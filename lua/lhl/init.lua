@@ -1,6 +1,3 @@
-require("lhl.remap")
-require("lhl.set")
-
 vim.cmd [[
 function! RunCurrentFile()
 let l:filename = expand('%:p')  " Get the full path of the current file
