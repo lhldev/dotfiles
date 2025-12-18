@@ -51,3 +51,14 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Special characters in filenames
 vim.opt.isfname:append("@-@")
+
+-- Extra
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    -- vim.schedule defers execution until the UI is ready and stable
+    vim.schedule(function()
+      vim.cmd("nohlsearch")
+    end)
+  end,
+  desc = "Clear highlights AFTER the buffer switch is complete",
+})

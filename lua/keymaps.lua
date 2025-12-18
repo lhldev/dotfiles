@@ -34,12 +34,9 @@ vim.keymap.set("v", "<leader>d", "\"_d", { desc = "Delete selection without yank
 
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode (Ctrl-C)" })
 
-vim.keymap.set("n", "<leader>r", ":call RunCurrentFile()<CR>", { desc = "Run current file (custom function)" })
+vim.keymap.set("n", "<leader>r", require('plugins/custom').run_current_file, { desc = "Run current file (custom function)" })
 
 vim.keymap.set("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>", { desc = "Format buffer with LSP" })
-
-vim.keymap.set("v", "<Tab>", ":lua IndentForward()<CR>", { desc = "Indent selection forward (custom)" })
-vim.keymap.set("v", "<S-Tab>", ":lua IndentBackward()<CR>", { desc = "Indent selection backward (custom)" })
 
 vim.keymap.set('n', '<leader>p', ':let @+=expand("%:p")<CR>', { desc = "Copy file path to clipboard" })
 
@@ -47,4 +44,4 @@ vim.keymap.set("n", "<leader>c", function()
     vim.cmd("!cmake --fresh -S . -B build")
 end, { desc = "Run CMake fresh build" })
 
-vim.keymap.set("n", "<leader>t", ":call RunCTest()<CR>", { desc = "Run CTest (custom function)" })
+vim.keymap.set("n", "<leader>t", require("plugins.custom").run_ctest, { desc = "Run CTest (custom function)" })
