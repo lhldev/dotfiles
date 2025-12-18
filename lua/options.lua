@@ -12,7 +12,7 @@ vim.opt.termguicolors = true
 
 -- Status & Movement feedback
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 
 -- Tabs & Indentation
 vim.opt.tabstop = 4
@@ -47,7 +47,7 @@ vim.opt.splitbelow = true
 
 -- Listchars: whitespace visualization
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
 
 -- Special characters in filenames
 vim.opt.isfname:append("@-@")
