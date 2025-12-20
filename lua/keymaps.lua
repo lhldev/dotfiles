@@ -41,8 +41,6 @@ vim.keymap.set(
 	{ desc = "Run current file (custom function)" }
 )
 
-vim.keymap.set("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>", { desc = "Format buffer with LSP" })
-
 vim.keymap.set("n", "<leader>p", ':let @+=expand("%:p")<CR>', { desc = "Copy file path to clipboard" })
 
 vim.keymap.set("n", "<leader>c", function()
