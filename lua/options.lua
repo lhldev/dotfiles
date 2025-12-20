@@ -55,7 +55,6 @@ vim.opt.isfname:append("@-@")
 -- Extra
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
-    -- vim.schedule defers execution until the UI is ready and stable
     vim.schedule(function()
       vim.cmd("nohlsearch")
     end)

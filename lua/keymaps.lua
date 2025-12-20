@@ -37,7 +37,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode (Ctrl-C)" })
 vim.keymap.set(
 	"n",
 	"<leader>r",
-	require("plugins/custom").run_current_file,
+	require("plugins.custom").run_current_file,
 	{ desc = "Run current file (custom function)" }
 )
 
@@ -50,3 +50,6 @@ vim.keymap.set("n", "<leader>c", function()
 end, { desc = "Run CMake fresh build" })
 
 vim.keymap.set("n", "<leader>t", require("plugins.custom").run_ctest, { desc = "Run CTest (custom function)" })
+
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
