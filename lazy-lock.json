@@ -5,6 +5,7 @@
   "fidget.nvim": { "branch": "main", "commit": "64463022a1f2ff1318ab22a2ea4125ed9313a483" },
   "gitsigns.nvim": { "branch": "main", "commit": "5813e4878748805f1518cee7abb50fd7205a3a48" },
   "guess-indent.nvim": { "branch": "main", "commit": "84a4987ff36798c2fc1169cbaff67960aed9776f" },
+  "harpoon": { "branch": "harpoon2", "commit": "87b1a3506211538f460786c23f98ec63ad9af4e5" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "lazydev.nvim": { "branch": "main", "commit": "5231c62aa83c2f8dc8e7ba957aa77098cda1257d" },
