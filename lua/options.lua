@@ -4,7 +4,7 @@ vim.opt.relativenumber = true
 
 -- UI
 vim.opt.showmode = false
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 8
 vim.opt.confirm = true
@@ -32,7 +32,23 @@ vim.opt.incsearch = true
 
 -- Clipboard (set with schedule for startup timing reasons)
 vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
+	vim.o.clipboard = "unnamedplus"
+
+	if vim.fn.has("wsl") == 1 then
+		vim.o.clipboard = ""
+
+		vim.api.nvim_create_autocmd("TextYankPost", {
+			group = vim.api.nvim_create_augroup("WslClipboard", { clear = true }),
+			callback = function()
+				if vim.v.event.operator == "y" then
+					local text = vim.fn.getreg('"')
+					vim.fn.system("clip.exe", text)
+				end
+			end,
+		})
+	else
+		vim.o.clipboard = "unnamedplus"
+	end
 end)
 
 -- File & Swap Management
@@ -47,17 +63,17 @@ vim.opt.splitbelow = true
 
 -- Listchars: whitespace visualization
 vim.opt.list = true
-vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Special characters in filenames
 vim.opt.isfname:append("@-@")
 
 -- Extra
 vim.api.nvim_create_autocmd("BufEnter", {
-  callback = function()
-    vim.schedule(function()
-      vim.cmd("nohlsearch")
-    end)
-  end,
-  desc = "Clear highlights AFTER the buffer switch is complete",
+	callback = function()
+		vim.schedule(function()
+			vim.cmd("nohlsearch")
+		end)
+	end,
+	desc = "Clear highlights AFTER the buffer switch is complete",
 })
