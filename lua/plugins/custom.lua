@@ -21,6 +21,8 @@ function M.run_current_file()
 		term_cmd("make -C build run -j $(nproc)")
 	elseif ext == "cs" then
 		term_cmd("dotnet run")
+	elseif ext == "zig" then
+		term_cmd("zig run " .. filename)
 	elseif ext == "py" then
 		term_cmd("python3 " .. filename)
 	elseif ext == "go" then
