@@ -22,7 +22,7 @@ function M.run_current_file()
 	elseif ext == "cs" then
 		term_cmd("dotnet run")
 	elseif ext == "zig" then
-		term_cmd("zig run " .. filename)
+		term_cmd("zig build run")
 	elseif ext == "py" then
 		term_cmd("python3 " .. filename)
 	elseif ext == "go" then
