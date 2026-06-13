@@ -47,7 +47,7 @@ vim.keymap.set("n", "<leader>c", function()
 	vim.cmd("!cmake --fresh -S . -B build")
 end, { desc = "Run CMake fresh build" })
 
-vim.keymap.set("n", "<leader>t", require("plugins.custom").run_ctest, { desc = "Run CTest (custom function)" })
+vim.keymap.set("n", "<leader>t", require("plugins.custom").run_test, { desc = "Run CTest (custom function)" })
 
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")

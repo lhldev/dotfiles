@@ -14,14 +14,13 @@ function M.run_current_file()
 	local ext = vim.fn.expand("%:e")
 	local dir = vim.fn.expand("%:p:h")
 	if ext == "rs" then
-		-- Rust (Cargo)
 		local manifest = vim.fn.expand("%:p:h:h") .. "/Cargo.toml"
 		term_cmd('cargo run --manifest-path "' .. manifest .. '"')
 	elseif ext == "c" or ext == "cpp" or ext == "h" or ext == "hpp" then
 		term_cmd("make -C build run -j $(nproc)")
 	elseif ext == "cs" then
 		term_cmd("dotnet run")
-	elseif ext == "zig" then
+	elseif ext == "zig" or ext == "zon" then
 		term_cmd("zig build run")
 	elseif ext == "py" then
 		term_cmd("python3 " .. filename)
@@ -36,8 +35,13 @@ function M.run_current_file()
 end
 
 -- Run CTest in build dir
-function M.run_ctest()
-	term_cmd("ctest --output-on-failure --verbose --test-dir build")
+function M.run_test()
+	local ext = vim.fn.expand("%:e")
+	if ext == "c" or ext == "cpp" or ext == "h" or ext == "hpp" then
+		term_cmd("ctest --output-on-failure --verbose --test-dir build")
+	elseif ext == "zig" or ext == "zon" then
+		term_cmd("zig build test --summary all")
+	end
 end
 
 -- Live Server
