@@ -236,7 +236,13 @@ return {
 					html = {},
 					csharp_ls = {},
 					vimls = {},
-					zls = {},
+					zls = {
+						settings = {
+							-- Rebuild on write until zls gets better.
+							enable_build_on_save = true,
+							build_on_save_step = "check",
+						},
+					},
 					pyright = {},
 					rust_analyzer = {},
 					-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
