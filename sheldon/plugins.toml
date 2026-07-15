@@ -13,8 +13,8 @@
 shell = "zsh"
 
 [plugins]
-github = "zsh-users/zsh-syntax-highlighting"
-github = "zsh-users/zsh-autosuggestions"
+zsh-syntax-highlighting = { github = "zsh-users/zsh-syntax-highlighting" }
+zsh-autosuggestions = { github = "zsh-users/zsh-autosuggestions" }
 
 # For example:
 #
