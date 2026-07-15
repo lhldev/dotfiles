@@ -1,6 +1,5 @@
 eval "$(starship init zsh)"
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(sheldon source)"
 
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
