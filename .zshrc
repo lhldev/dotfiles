@@ -1,3 +1,7 @@
+if [[ -f ~/.zshrc.local ]]; then
+    source ~/.zshrc.local
+fi
+
 eval "$(starship init zsh)"
 eval "$(sheldon source)"
 
@@ -13,8 +17,3 @@ SAVEHIST=10000
 setopt APPEND_HISTORY       # Append history to the file rather than overwriting
 setopt SHARE_HISTORY        # Share history across all active terminal sessions
 setopt HIST_IGNORE_DUPS     # Prevent consecutive duplicate commands from being logged
-
-# ZVM
-export ZVM_INSTALL="$HOME/.zvm/self"
-export PATH="$HOME/.zvm/bin:$PATH"
-export PATH="$ZVM_INSTALL:$PATH"
