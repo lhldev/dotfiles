@@ -1,6 +1,6 @@
 eval "$(starship init zsh)"
-source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
