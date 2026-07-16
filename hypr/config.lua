@@ -4,4 +4,7 @@ return {
 	menu = "hyprlauncher",
 	browser = "firefox",
 	notificationDaemon = "mako",
+	bluetoothManager = "blueman-applet",
+	statusBar = "waybar",
+	wallpaper = "hyprpaper",
 }
