@@ -1,0 +1,42 @@
+{
+    "layer": "top",
+	"width": 1000,
+    "modules-left": ["pulseaudio"],
+    "modules-center": ["clock#left", "hyprland/workspaces", "clock#right"],
+    "modules-right": [""],
+    "clock#left": {
+        "format": "{:%H}"
+	},
+    "clock#right": {
+        "format": "{:%M}"
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "󰂑",
+			"headset": "󰂑",
+			"phone": "",
+			"phone-muted": "",
+			"portable": "",
+			"car": "",
+			"default": ["󰖀", "󰕾"]
+		},
+		"scroll-step": 1,
+		"on-click": "pavucontrol"
+	},
+	"hyprland/workspaces": {
+		"format": "{name} {icon} ",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"active": "",
+			"default": ""
+		},
+	}
+}
