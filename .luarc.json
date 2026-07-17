@@ -1,5 +1,10 @@
 {
   "diagnostics": {
-    "globals": ["hl", "vim"]
+    "globals": ["vim"]
+  },
+  "workspace": {
+    "library": [
+      "/usr/share/hypr/stubs"
+    ]
   }
 }

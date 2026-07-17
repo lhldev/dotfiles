@@ -1,0 +1,71 @@
+{
+    "layer": "top",
+	"width": 1000,
+    "modules-left": ["cpu", "temperature#cpu", "custom/gputemp", "pulseaudio"],
+    "modules-center": ["clock#left", "hyprland/workspaces", "clock#right"],
+    "modules-right": ["network", "bluetooth"],
+    "clock#left": {
+        "format": "{:%H}"
+	},
+    "clock#right": {
+        "format": "{:%M}"
+	},
+	"cpu": {
+		"format": " {usage}%",
+		"interval": 5
+	},
+	"temperature#cpu": {
+		"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"format": " {temperatureC}°C",
+		"interval": 5
+	},
+	"custom/gputemp": {
+		"exec": "~/.config/waybar/scripts/gputemp.sh",
+		"interval": 5,
+		"format": " {}°C"
+	},
+	"network": {
+		"format-wifi": "  {signalStrength}%",
+		"format-ethernet": " ",
+		"format-disconnected": "󰖪 ",
+		"interval": 10,
+		"on-click": "nm-connection-editor"
+	},
+	"bluetooth": {
+		"format-on": "",
+		"format-off": "󰂲",
+		"format-disabled": "󰂲",
+		"format-connected": " {num_connections}",
+		"interval": 10,
+		"on-click": "blueman-manager"
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "󰂑",
+			"headset": "󰂑",
+			"phone": "",
+			"phone-muted": "",
+			"portable": "",
+			"car": "",
+			"default": ["󰖀", "󰕾"]
+		},
+		"scroll-step": 1,
+		"on-click": "pavucontrol"
+	},
+	"hyprland/workspaces": {
+		"format": "{name} {icon} ",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"active": "",
+			"default": ""
+		},
+	}
+}

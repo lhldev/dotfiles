@@ -1,0 +1,13 @@
+local cfg = require("config")
+
+hl.on("hyprland.start", function()
+	hl.exec_cmd(cfg.notificationDaemon)
+	hl.exec_cmd(cfg.browser)
+	hl.exec_cmd(cfg.terminal, { workspace = "2 silent" })
+	hl.exec_cmd("nm-applet --indicator")
+	hl.exec_cmd(cfg.bluetoothManager)
+	hl.exec_cmd(cfg.statusBar)
+	hl.exec_cmd(cfg.wallpaper)
+	hl.exec_cmd("wl-paste --type text --watch cliphist store")
+	hl.exec_cmd("wl-paste --type image --watch cliphist store")
+end)
