@@ -1,14 +1,43 @@
 {
     "layer": "top",
 	"width": 1000,
-    "modules-left": ["pulseaudio"],
+    "modules-left": ["cpu", "temperature#cpu", "custom/gputemp", "pulseaudio"],
     "modules-center": ["clock#left", "hyprland/workspaces", "clock#right"],
-    "modules-right": [""],
+    "modules-right": ["network", "bluetooth"],
     "clock#left": {
         "format": "{:%H}"
 	},
     "clock#right": {
         "format": "{:%M}"
+	},
+	"cpu": {
+		"format": " {usage}%",
+		"interval": 5
+	},
+	"temperature#cpu": {
+		"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"format": " {temperatureC}°C",
+		"interval": 5
+	},
+	"custom/gputemp": {
+		"exec": "~/.config/waybar/scripts/gputemp.sh",
+		"interval": 5,
+		"format": " {}°C"
+	},
+	"network": {
+		"format-wifi": "  {signalStrength}%",
+		"format-ethernet": " ",
+		"format-disconnected": "󰖪 ",
+		"interval": 10,
+		"on-click": "nm-connection-editor"
+	},
+	"bluetooth": {
+		"format-on": "",
+		"format-off": "󰂲",
+		"format-disabled": "󰂲",
+		"format-connected": " {num_connections}",
+		"interval": 10,
+		"on-click": "blueman-manager"
 	},
 	"pulseaudio": {
 		"format": "{icon} {volume}%",

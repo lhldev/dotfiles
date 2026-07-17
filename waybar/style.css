@@ -48,3 +48,14 @@ window#waybar {
 .modules-right {
     margin-right: 12px;
 }
+
+#cpu,
+#temperature,
+#custom-gputemp {
+    margin: 0 8px;
+}
+
+#network,
+#bluetooth {
+    margin: 0 8px;
+}
