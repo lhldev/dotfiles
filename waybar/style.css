@@ -1,7 +1,9 @@
 @import "colors/gruvbox-material.css";
 
 * {
-    all: unset;
+    margin: 0;
+    padding: 0;
+    border: none;
     font-family: "FiraCode Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -26,6 +28,7 @@ window#waybar {
     border-radius: 99px;
     margin: 0 2px;
     min-width: 4px;
+    min-height: 0;
 }
 
 #workspaces button.active {
@@ -51,11 +54,19 @@ window#waybar {
 
 #cpu,
 #temperature,
-#custom-gputemp {
+#custom-gputemp,
+#network {
     margin: 0 8px;
 }
 
-#network,
-#bluetooth {
-    margin: 0 8px;
+#tray {
+    margin-right: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
 }

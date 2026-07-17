@@ -3,7 +3,7 @@
 	"width": 1000,
     "modules-left": ["cpu", "temperature#cpu", "custom/gputemp", "pulseaudio"],
     "modules-center": ["clock#left", "hyprland/workspaces", "clock#right"],
-    "modules-right": ["network", "bluetooth"],
+    "modules-right": ["network", "tray"],
     "clock#left": {
         "format": "{:%H}"
 	},
@@ -24,20 +24,14 @@
 		"interval": 5,
 		"format": " {}°C"
 	},
+	"tray": {
+		"spacing": 10,
+	},
 	"network": {
-		"format-wifi": "  {signalStrength}%",
+		"format-wifi": "{signalStrength}%",
 		"format-ethernet": " ",
 		"format-disconnected": "󰖪 ",
 		"interval": 10,
-		"on-click": "nm-connection-editor"
-	},
-	"bluetooth": {
-		"format-on": "",
-		"format-off": "󰂲",
-		"format-disabled": "󰂲",
-		"format-connected": " {num_connections}",
-		"interval": 10,
-		"on-click": "blueman-manager"
 	},
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
@@ -57,15 +51,6 @@
 		"on-click": "pavucontrol"
 	},
 	"hyprland/workspaces": {
-		"format": "{name} {icon} ",
-		"format-icons": {
-			"1": "",
-			"2": "",
-			"3": "",
-			"4": "",
-			"5": "",
-			"active": "",
-			"default": ""
-		},
+		"format": "",
 	}
 }

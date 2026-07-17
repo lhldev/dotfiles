@@ -20,5 +20,5 @@ hl.env("NIXOS_OZONE_WL", "1")
 hl.env("SDL_VIDEODRIVER", "wayland")
 hl.env("GDK_BACKEND", "wayland,x11")
 
--- Qt theme
-hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+-- Qt
+hl.env("QT_QPA_PLATFORMTHEME", "kde")
