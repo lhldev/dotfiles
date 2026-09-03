@@ -2,8 +2,8 @@ if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
 
-eval "$(starship init zsh)"
 eval "$(sheldon source)"
+eval "$(starship init zsh)"
 
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
