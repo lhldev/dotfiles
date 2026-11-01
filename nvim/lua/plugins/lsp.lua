@@ -266,7 +266,7 @@ return {
 							},
 						},
 					},
-					java_language_server = {},
+					jls = {},
 				},
 				-- This table contains config for all language servers that are *not* installed via Mason.
 				-- Structure is identical to the mason table from above.
@@ -311,6 +311,10 @@ return {
 				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_enable = true, -- automatically run vim.lsp.enable() for all servers that are installed via Mason
 			})
+
+			-- mason-registry's `jls` package omits `neovim.lspconfig`, so
+			-- mason-lspconfig's automatic_enable skips it. Enable manually.
+			vim.lsp.enable("jls")
 
 			-- Manually run vim.lsp.enable for all language servers that are *not* installed via Mason
 			if not vim.tbl_isempty(servers.others) then
