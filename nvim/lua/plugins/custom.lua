@@ -10,9 +10,10 @@ end
 
 -- Run the current file, detecting language by extension
 function M.run_current_file()
-	local filename = vim.fn.expand("%:p")
+	local full_path = vim.fn.expand("%:p")
 	local ext = vim.fn.expand("%:e")
-	local dir = vim.fn.expand("%:p:h")
+	-- Unsued dir
+	-- local dir = vim.fn.expand("%:p:h")
 	if ext == "rs" then
 		local manifest = vim.fn.expand("%:p:h:h") .. "/Cargo.toml"
 		term_cmd('cargo run --manifest-path "' .. manifest .. '"')
@@ -23,9 +24,11 @@ function M.run_current_file()
 	elseif ext == "zig" or ext == "zon" then
 		term_cmd("zig build run")
 	elseif ext == "py" then
-		term_cmd("python3 " .. filename)
+		term_cmd("python3 " .. full_path)
 	elseif ext == "go" then
 		term_cmd("go run .")
+	elseif ext == "java" then
+		term_cmd("java " .. full_path)
 	elseif ext == "html" then
 		M.LiveServer()
 		vim.fn.jobstart({ "explorer.exe", "http://localhost:8080" })
