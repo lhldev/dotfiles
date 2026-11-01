@@ -220,6 +220,51 @@ return {
 			---@class LspServersConfig
 			---@field mason table<string, vim.lsp.Config>
 			---@field others table<string, vim.lsp.Config>
+			---
+			local function jls_cmd()
+				local dir = vim.fn.stdpath("data") .. "/mason/packages/jls"
+				local java = vim.fn.exepath("java")
+				if java == "" then
+					java = "java"
+				end
+				return {
+					java,
+					"--add-modules=jdk.jdeps",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.platform=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED",
+					"--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
+					"--add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED",
+					"-Xmx2g",
+					"-Xms512m",
+					"-XX:MaxHeapFreeRatio=50",
+					"-XX:MinHeapFreeRatio=20",
+					"-XX:+UseStringDeduplication",
+					"-Djava.util.logging.config.file=" .. dir .. "/linux/conf/logging.properties",
+					"-classpath",
+					dir .. "/classpath/*",
+					"org.javacs.Main",
+				}
+			end
+
 			local servers = {
 				--  Add any additional override configuration in any of the following tables. Available keys are:
 				--  - cmd (table): Override the default command used to start the server
@@ -266,7 +311,21 @@ return {
 							},
 						},
 					},
-					jls = {},
+					jls = {
+						cmd = jls_cmd(),
+						root_markers = {
+							"build.xml",
+							"nbproject",
+							"pom.xml",
+							"build.gradle",
+							"build.gradle.kts",
+							"settings.gradle",
+							"settings.gradle.kts",
+							"WORKSPACE",
+							"WORKSPACE.bazel",
+							".java-version",
+						},
+					},
 				},
 				-- This table contains config for all language servers that are *not* installed via Mason.
 				-- Structure is identical to the mason table from above.
