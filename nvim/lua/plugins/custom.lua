@@ -44,6 +44,8 @@ function M.run_test()
 		term_cmd("ctest --output-on-failure --verbose --test-dir build")
 	elseif ext == "zig" or ext == "zon" then
 		term_cmd("zig build test --summary all")
+	elseif ext == "rs" then
+		term_cmd("cargo test")
 	end
 end
 
